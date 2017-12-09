@@ -101,6 +101,8 @@ public class KubernetesCloud extends Cloud {
     private int retentionTimeout = DEFAULT_RETENTION_TIMEOUT_MINUTES;
     private int connectTimeout;
     private int readTimeout;
+    
+    private String secret;
 
     private transient KubernetesClient client;
     private int maxRequestsPerHost;
@@ -130,11 +132,12 @@ public class KubernetesCloud extends Cloud {
         this.containerCap = source.containerCap;
         this.retentionTimeout = source.retentionTimeout;
         this.connectTimeout = source.connectTimeout;
+        this.secret = source.secret;
     }
 
     @Deprecated
     public KubernetesCloud(String name, List<? extends PodTemplate> templates, String serverUrl, String namespace,
-            String jenkinsUrl, String containerCapStr, int connectTimeout, int readTimeout, int retentionTimeout) {
+            String jenkinsUrl, String containerCapStr, int connectTimeout, int readTimeout, int retentionTimeout, String secret) {
         this(name);
 
         setServerUrl(serverUrl);
@@ -147,9 +150,19 @@ public class KubernetesCloud extends Cloud {
         setRetentionTimeout(retentionTimeout);
         setConnectTimeout(connectTimeout);
         setReadTimeout(readTimeout);
+        setSecret(secret);
 
     }
 
+    public String getSecret() {
+		return secret;
+	}
+    
+    @DataBoundSetter
+    public void setSecret(String secret) {
+		this.secret = secret;
+	}
+    
     public int getRetentionTimeout() {
         return retentionTimeout;
     }

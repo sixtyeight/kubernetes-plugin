@@ -56,6 +56,8 @@ public class PodTemplateStep extends Step implements Serializable {
     private Node.Mode nodeUsageMode;
     private String workingDir = ContainerTemplate.DEFAULT_WORKING_DIR;
 
+    private String cloudSecret;
+    
     @DataBoundConstructor
     public PodTemplateStep(String label, String name) {
         this.label = label;
@@ -225,6 +227,15 @@ public class PodTemplateStep extends Step implements Serializable {
         this.annotations = annotations;
     }
 
+    public String getCloudSecret() {
+		return cloudSecret;
+	}
+
+    @DataBoundSetter
+    public void setCloudSecret(String cloudSecret) {
+		this.cloudSecret = cloudSecret;
+	}
+    
     public List<String> getImagePullSecrets() {
         return imagePullSecrets == null ? Collections.emptyList() : imagePullSecrets;
     }

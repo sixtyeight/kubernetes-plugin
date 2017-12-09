@@ -55,6 +55,10 @@
       <f:entry title="${%Container Cleanup Timeout (minutes)}" field="retentionTimeout">
         <f:textbox default="5"/>
       </f:entry>
+
+      <f:entry title="${%Required Secret to provide for usage}" field="secret">
+        <f:password default=""/>
+      </f:entry>
     </f:advanced>
 
     <f:entry title="${%Defaults Provider Template Name}" field="defaultsProviderTemplate">

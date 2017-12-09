@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import edu.umd.cs.findbugs.annotations.CheckForNull;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.csanchez.jenkins.plugins.kubernetes.KubernetesCloud;
 import org.csanchez.jenkins.plugins.kubernetes.PodImagePullSecret;
 import org.csanchez.jenkins.plugins.kubernetes.PodTemplate;
@@ -55,7 +56,22 @@ public class PodTemplateStepExecution extends AbstractStepExecutionImpl {
                     cloud.getClass().getName()));
         }
         KubernetesCloud kubernetesCloud = (KubernetesCloud) cloud;
+        
+        // Check if the usage of the KubernetesCloud has been restricted by requiring a secret.
+        if(! StringUtils.isEmpty(kubernetesCloud.getSecret())) {
+        	LOGGER.fine("Verifying provided secret for cloud: " + step.getCloud());
+        	if(StringUtils.isEmpty(step.getCloudSecret())) {
+                throw new AbortException(String.format("Usage of Kubernetes cloud %s is restricted. Provide the secret in 'cloudSecret'.", step.getCloud()));
+        	}
 
+        	if(! StringUtils.equals(kubernetesCloud.getSecret(), step.getCloudSecret())) {
+                throw new AbortException(String.format("Not authorized to use Kubernetes cloud: %s", step.getCloud()));
+        	}
+        	LOGGER.fine("Verification succeeded for cloud: " + step.getCloud());
+        } else if(! StringUtils.isEmpty(step.getCloudSecret())) {
+        	LOGGER.warning(String.format("cloudSecret has been provided but usage of Kubernetes cloud %s is not restricted", step.getCloud()));
+        }
+        
         Run<?, ?> run = getContext().get(Run.class);
         PodTemplateAction podTemplateAction = run.getAction(PodTemplateAction.class);
         NamespaceAction namespaceAction = run.getAction(NamespaceAction.class);
