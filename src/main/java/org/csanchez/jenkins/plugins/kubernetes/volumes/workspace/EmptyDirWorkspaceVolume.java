@@ -37,6 +37,8 @@ import io.fabric8.kubernetes.api.model.VolumeBuilder;
 
 public class EmptyDirWorkspaceVolume extends WorkspaceVolume {
 
+    private static final long serialVersionUID = -3447629615075558675L;
+
     private static final String DEFAULT_MEDIUM = "";
     private static final String MEMORY_MEDIUM = "Memory";
 

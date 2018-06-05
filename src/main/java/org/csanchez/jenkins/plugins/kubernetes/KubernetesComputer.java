@@ -1,10 +1,8 @@
 package org.csanchez.jenkins.plugins.kubernetes;
 
-import hudson.EnvVars;
 import hudson.model.Executor;
 import hudson.model.Queue;
 import hudson.slaves.AbstractCloudComputer;
-import java.io.IOException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

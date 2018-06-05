@@ -2,7 +2,6 @@ package org.csanchez.jenkins.plugins.kubernetes.pipeline;
 
 import org.apache.commons.lang.StringUtils;
 import org.csanchez.jenkins.plugins.kubernetes.ContainerTemplate;
-import org.csanchez.jenkins.plugins.kubernetes.KubernetesCloud;
 import org.jenkinsci.Symbol;
 import org.jenkinsci.plugins.pipeline.modeldefinition.agent.DeclarativeAgent;
 import org.jenkinsci.plugins.pipeline.modeldefinition.agent.DeclarativeAgentDescriptor;
@@ -22,6 +21,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class KubernetesDeclarativeAgent extends DeclarativeAgent<KubernetesDeclarativeAgent> {
+
+    private static final long serialVersionUID = 500919717810255729L;
 
     private static final Logger LOGGER = Logger.getLogger(KubernetesDeclarativeAgent.class.getName());
 

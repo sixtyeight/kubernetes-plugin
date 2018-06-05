@@ -20,7 +20,7 @@ public class PodTemplateAction extends AbstractInvisibleRunAction2 implements Ru
     }
 
     @Deprecated
-    PodTemplateAction(Run run) {
+    PodTemplateAction(Run<?, ?> run) {
         setRun(run);
     }
 

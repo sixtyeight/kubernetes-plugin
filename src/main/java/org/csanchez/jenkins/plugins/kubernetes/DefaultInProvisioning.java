@@ -13,6 +13,7 @@ import hudson.model.Node;
 
 @Extension
 public class DefaultInProvisioning extends InProvisioning {
+    @SuppressWarnings("unused")
     private static final Logger LOGGER = Logger.getLogger(DefaultInProvisioning.class.getName());
 
     private static boolean isNotAcceptingTasks(Node n) {

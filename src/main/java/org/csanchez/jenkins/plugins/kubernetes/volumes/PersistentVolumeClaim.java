@@ -36,6 +36,9 @@ import io.fabric8.kubernetes.api.model.Volume;
 import io.fabric8.kubernetes.api.model.VolumeBuilder;
 
 public class PersistentVolumeClaim extends PodVolume {
+
+    private static final long serialVersionUID = 7122005043975684539L;
+
     private String mountPath;
     private String claimName;
     @CheckForNull

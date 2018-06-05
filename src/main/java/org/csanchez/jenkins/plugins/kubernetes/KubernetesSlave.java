@@ -94,7 +94,7 @@ public class KubernetesSlave extends AbstractCloudSlave {
      */
     @Deprecated
     public KubernetesSlave(PodTemplate template, String nodeDescription, KubernetesCloud cloud, String labelStr,
-                           RetentionStrategy rs)
+                           RetentionStrategy<?> rs)
             throws Descriptor.FormException, IOException {
         this(template, nodeDescription, cloud.name, labelStr, rs);
     }
@@ -105,13 +105,13 @@ public class KubernetesSlave extends AbstractCloudSlave {
     @Deprecated
     @DataBoundConstructor // make stapler happy. Not actually used.
     public KubernetesSlave(PodTemplate template, String nodeDescription, String cloudName, String labelStr,
-                           RetentionStrategy rs)
+                           RetentionStrategy<?> rs)
             throws Descriptor.FormException, IOException {
         this(getSlaveName(template), template, nodeDescription, cloudName, labelStr, new KubernetesLauncher(), rs);
     }
 
     protected KubernetesSlave(String name, PodTemplate template, String nodeDescription, String cloudName, String labelStr,
-                           ComputerLauncher computerLauncher, RetentionStrategy rs)
+                           ComputerLauncher computerLauncher, RetentionStrategy<?> rs)
             throws Descriptor.FormException, IOException {
         super(name,
                 nodeDescription,
@@ -316,7 +316,7 @@ public class KubernetesSlave extends AbstractCloudSlave {
         private KubernetesCloud cloud;
         private String label;
         private ComputerLauncher computerLauncher;
-        private RetentionStrategy retentionStrategy;
+        private RetentionStrategy<?> retentionStrategy;
 
         /**
          * @param name The name of the future {@link KubernetesSlave}
@@ -376,12 +376,12 @@ public class KubernetesSlave extends AbstractCloudSlave {
          * @param retentionStrategy The retention strategy to use for the {@link KubernetesSlave} instance.
          * @return the current instance for method chaining
          */
-        public Builder retentionStrategy(RetentionStrategy retentionStrategy) {
+        public Builder retentionStrategy(RetentionStrategy<?> retentionStrategy) {
             this.retentionStrategy = retentionStrategy;
             return this;
         }
 
-        private RetentionStrategy determineRetentionStrategy() {
+        private RetentionStrategy<?> determineRetentionStrategy() {
             if (podTemplate.getIdleMinutes() == 0) {
                 return new OnceRetentionStrategy(cloud.getRetentionTimeout());
             } else {

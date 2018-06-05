@@ -21,6 +21,7 @@ import hudson.util.CopyOnWriteMap;
  */
 @Extension
 public class PodTemplateMap {
+    @SuppressWarnings("unused")
     private static final Logger LOGGER = Logger.getLogger(PodTemplateMap.class.getName());
 
     public static PodTemplateMap get() {

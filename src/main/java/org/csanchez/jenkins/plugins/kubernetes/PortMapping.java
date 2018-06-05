@@ -13,6 +13,8 @@ import org.kohsuke.stapler.DataBoundSetter;
 
 public class PortMapping extends AbstractDescribableImpl<PortMapping> implements Serializable {
 
+    private static final long serialVersionUID = 2842631881006552345L;
+
     private String name;
     private Integer containerPort;
     private Integer hostPort;

@@ -634,7 +634,7 @@ public class KubernetesCloud extends Cloud {
                                     Jenkins.getInstance(), //
                                     ACL.SYSTEM, //
                                     serverUrl != null ? URIRequirementBuilder.fromUri(serverUrl).build()
-                                            : Collections.EMPTY_LIST //
+                                            : Collections.emptyList() //
                             ));
 
         }

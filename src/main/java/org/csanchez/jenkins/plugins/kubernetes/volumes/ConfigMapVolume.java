@@ -34,6 +34,8 @@ import io.fabric8.kubernetes.api.model.VolumeBuilder;
 
 public class ConfigMapVolume extends PodVolume {
 
+    private static final long serialVersionUID = 907839165001397333L;
+
     private String mountPath;
     private String configMapName;
 

@@ -36,6 +36,9 @@ import io.fabric8.kubernetes.api.model.Volume;
 import io.fabric8.kubernetes.api.model.VolumeBuilder;
 
 public class PersistentVolumeClaimWorkspaceVolume extends WorkspaceVolume {
+
+    private static final long serialVersionUID = 3562971099734168515L;
+
     private String claimName;
     @CheckForNull
     private Boolean readOnly;

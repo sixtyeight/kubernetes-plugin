@@ -19,7 +19,7 @@ public class NamespaceAction extends AbstractInvisibleRunAction2 implements RunA
     }
 
     @Deprecated
-    public NamespaceAction(Run run) {
+    public NamespaceAction(Run<?, ?> run) {
         setRun(run);
     }
 

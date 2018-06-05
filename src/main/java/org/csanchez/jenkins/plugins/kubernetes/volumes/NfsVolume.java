@@ -36,6 +36,9 @@ import io.fabric8.kubernetes.api.model.Volume;
 import io.fabric8.kubernetes.api.model.VolumeBuilder;
 
 public class NfsVolume extends PodVolume {
+
+    private static final long serialVersionUID = -1477270163770076147L;
+
     private String mountPath;
     private String serverAddress;
     private String serverPath;

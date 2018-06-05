@@ -40,6 +40,7 @@ public class PodEnvVar extends KeyValueEnvVar {
 
     @Extension
     public static class DescriptorVisibilityFilterImpl extends DescriptorVisibilityFilter {
+        @SuppressWarnings("rawtypes")
         @Override
         public boolean filter(@CheckForNull Object context, @Nonnull Descriptor descriptor) {
             return !(descriptor instanceof PodEnvVar.DescriptorImpl);

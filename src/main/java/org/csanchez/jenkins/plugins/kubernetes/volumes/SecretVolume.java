@@ -34,6 +34,8 @@ import io.fabric8.kubernetes.api.model.VolumeBuilder;
 
 public class SecretVolume extends PodVolume {
 
+    private static final long serialVersionUID = 4812468278859737062L;
+
     private String mountPath;
     private String secretName;
 

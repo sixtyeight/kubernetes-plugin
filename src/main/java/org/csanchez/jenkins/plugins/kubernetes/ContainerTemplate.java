@@ -257,7 +257,7 @@ public class ContainerTemplate extends AbstractDescribableImpl<ContainerTemplate
             return "Container Template";
         }
 
-        @SuppressWarnings("unused") // Used by jelly
+        @SuppressWarnings({ "unused", "rawtypes" }) // Used by jelly
         @Restricted(DoNotUse.class) // Used by jelly
         public List<? extends Descriptor> getEnvVarsDescriptors() {
             return DescriptorVisibilityFilter.apply(null, Jenkins.getInstance().getDescriptorList(TemplateEnvVar.class));

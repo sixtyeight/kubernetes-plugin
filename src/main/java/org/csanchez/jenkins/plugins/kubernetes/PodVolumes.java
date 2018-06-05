@@ -9,10 +9,13 @@ public class PodVolumes {
 
     @Deprecated
     public static abstract class PodVolume extends org.csanchez.jenkins.plugins.kubernetes.volumes.PodVolume {
+        private static final long serialVersionUID = -4563542579530618024L;
     }
 
     @Deprecated
     public static class EmptyDirVolume extends org.csanchez.jenkins.plugins.kubernetes.volumes.EmptyDirVolume {
+
+        private static final long serialVersionUID = -5525423285873662546L;
 
         public EmptyDirVolume(String mountPath, Boolean memory) {
             super(mountPath, memory);
@@ -27,6 +30,8 @@ public class PodVolumes {
     @Deprecated
     public static class SecretVolume extends org.csanchez.jenkins.plugins.kubernetes.volumes.SecretVolume {
 
+        private static final long serialVersionUID = -3962363635990517065L;
+
         public SecretVolume(String mountPath, String secretName) {
             super(mountPath, secretName);
         }
@@ -40,6 +45,8 @@ public class PodVolumes {
     @Deprecated
     public static class HostPathVolume extends org.csanchez.jenkins.plugins.kubernetes.volumes.HostPathVolume {
 
+    	private static final long serialVersionUID = 2260587971424224380L;
+
         public HostPathVolume(String hostPath, String mountPath) {
             super(hostPath, mountPath);
         }
@@ -52,6 +59,7 @@ public class PodVolumes {
 
     @Deprecated
     public static class NfsVolume extends org.csanchez.jenkins.plugins.kubernetes.volumes.NfsVolume {
+        private static final long serialVersionUID = -2183260230914601398L;
 
         public NfsVolume(String serverAddress, String serverPath, Boolean readOnly, String mountPath) {
             super(serverAddress, serverPath, readOnly, mountPath);

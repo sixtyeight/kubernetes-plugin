@@ -33,6 +33,9 @@ import io.fabric8.kubernetes.api.model.Volume;
 import io.fabric8.kubernetes.api.model.VolumeBuilder;
 
 public class HostPathVolume extends PodVolume {
+
+    private static final long serialVersionUID = 822706886217532044L;
+
     private String mountPath;
     private String hostPath;
 

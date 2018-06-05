@@ -601,7 +601,6 @@ public class PodTemplate extends AbstractDescribableImpl<PodTemplate> implements
         this.yaml = yaml;
     }
 
-    @SuppressWarnings("deprecation")
     protected Object readResolve() {
         if (containers == null) {
             // upgrading from 0.8
@@ -679,7 +678,7 @@ public class PodTemplate extends AbstractDescribableImpl<PodTemplate> implements
             return "Kubernetes Pod Template";
         }
 
-        @SuppressWarnings("unused") // Used by jelly
+        @SuppressWarnings({ "unused", "rawtypes" }) // Used by jelly
         @Restricted(DoNotUse.class) // Used by jelly
         public List<? extends Descriptor> getEnvVarsDescriptors() {
             return DescriptorVisibilityFilter.apply(null, Jenkins.getInstance().getDescriptorList(TemplateEnvVar.class));
